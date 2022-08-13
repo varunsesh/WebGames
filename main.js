@@ -1,21 +1,21 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 
-let x = canvas.width/2;
-let y =canvas.height-30;
-let dx = 2;
-let dy = -2;
 
 let rightKeyPressed = false;    
 let leftKeyPressed = false;
 
 
-const ball = {
+let ball = {
+    x:canvas.width/2,
+    y:canvas.height-30,
+    dx:2, 
+    dy:-2,
     r:10,
     collFlag:false,
-    draw:function(x,y,cut){
+    draw:function(){
         ctx.beginPath();
-        ctx.arc(x, y, this.r, cut, Math.PI*2, false);
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI*2, false);
         ctx.fillStyle = "#0095DD";
         ctx.fill();
         ctx.closePath();    
@@ -23,7 +23,7 @@ const ball = {
     
 };
 
-const paddle = {
+let paddle = {
     paddleWidth:75, 
     paddleHeight:10,
     paddleX:canvas.width/2,
@@ -65,13 +65,16 @@ function keyUpHandler(e){
 }
 
 //Collision Detection
-function detectCollisions(x_ball, y_ball){
-    if (y_ball+dy <= ball.r || y_ball + dy >canvas.height-ball.r){
-        dy = -dy;
+function detectCollisions(){
+    let x_ball = ball.x;
+    let y_ball = ball.y;
+    
+    if (y_ball+ball.dy <= ball.r || y_ball + ball.dy >canvas.height-ball.r){
+        ball.dy = -ball.dy;
     }
 
-    if (x_ball+dx <= ball.r || x_ball + dx >canvas.width-ball.r){
-        dx = -dx;
+    if (x_ball+ball.dx <= ball.r || x_ball + ball.dx >canvas.width-ball.r){
+        ball.dx = -ball.dx;
     }
     
 }
@@ -80,11 +83,11 @@ function detectCollisions(x_ball, y_ball){
 
 function draw(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ball.draw(x,y,0);
+    ball.draw();
     paddle.draw();    
-    detectCollisions(x,y);
-    x+=dx;
-    y+=dy;
+    detectCollisions();
+    ball.x+=ball.dx;
+    ball.y+=ball.dy;
 }
 
 document.addEventListener("keydown", keyDownHandler, false);
