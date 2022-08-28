@@ -1,0 +1,25 @@
+{
+  "name": "webgames",
+  "version": "1.0.0",
+  "description": "Javascript based webgames",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varunsesh/WebGames.git"
+  },
+  "author": "varunsesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/varunsesh/WebGames/issues"
+  },
+  "homepage": "https://github.com/varunsesh/WebGames#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.19"
+  }
+}

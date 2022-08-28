@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Dev</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css">
 </head>
 <body>
     <canvas id="myCanvas" width="800" height="600"></canvas>
     
 </body>
-<script src="{{ url_for('static',filename='main.js') }}"></script>    
+<script src="main.js"></script>    
 </html>
+
+
+<!--{{ url_for('static',filename='styles/style.css') }}-->
+<!--{{ url_for('static',filename='main.js') }}-->
